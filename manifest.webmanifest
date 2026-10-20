@@ -1,0 +1,35 @@
+{
+  "id": "fit-bench",
+  "name": "Fit Bench",
+  "short_name": "Fit Bench",
+  "description": "Least-squares curve fitting for lab and research data. Fit polynomial, exponential, power-law, Gaussian, sinusoidal, damped, logistic, saturation or custom models with weighted, robust and x-error fitting, then export to Excel, CSV, text or JSON.",
+  "lang": "en-US",
+  "dir": "ltr",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#eef1f4",
+  "theme_color": "#eef1f4",
+  "categories": ["education", "productivity", "utilities"],
+  "icons": [
+    { "src": "icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "icons/maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ],
+  "screenshots": [
+    { "src": "screenshots/fit-bench-1.png", "sizes": "1920x1080", "type": "image/png", "form_factor": "wide", "label": "Fitting a Gaussian emission line with error bars and a 95% confidence band" },
+    { "src": "screenshots/fit-bench-2.png", "sizes": "1920x1080", "type": "image/png", "form_factor": "wide", "label": "Damped oscillation fit with parameter uncertainties and model comparison" },
+    { "src": "screenshots/fit-bench-3.png", "sizes": "1920x1080", "type": "image/png", "form_factor": "wide", "label": "Dark theme: exponential decay fit and export options" }
+  ],
+  "file_handlers": [
+    {
+      "action": "./",
+      "accept": {
+        "text/csv": [".csv"],
+        "text/tab-separated-values": [".tsv"],
+        "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet": [".xlsx"]
+      }
+    }
+  ],
+  "launch_handler": { "client_mode": "focus-existing" }
+}
