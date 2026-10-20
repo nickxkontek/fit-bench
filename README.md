@@ -1,4 +1,4 @@
-# Fit Bench
+# FitBench
 
 Least-squares curve fitting that runs in your browser or as an installed Windows app.
 
