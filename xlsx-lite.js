@@ -1,4 +1,4 @@
-/* xlsx-lite: a small, dependency-free Excel (.xlsx) writer and reader for Fit Bench.
+/* xlsx-lite: a small, dependency-free Excel (.xlsx) writer and reader for FitBench.
    Writer: builds a valid workbook (numbers, text, formulas, bold header row, column widths).
    Reader: returns the first worksheet as rows of strings (uses the browser's built-in deflate). */
 (function (global) {

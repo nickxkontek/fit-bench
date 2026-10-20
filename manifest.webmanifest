@@ -1,7 +1,7 @@
 {
   "id": "fit-bench",
-  "name": "Fit Bench",
-  "short_name": "Fit Bench",
+  "name": "FitBench",
+  "short_name": "FitBench",
   "description": "Least-squares curve fitting for lab and research data. Fit polynomial, exponential, power-law, Gaussian, sinusoidal, damped, logistic, saturation or custom models with weighted, robust and x-error fitting, then export to Excel, CSV, text or JSON.",
   "lang": "en-US",
   "dir": "ltr",

@@ -1,17 +1,17 @@
-<!DOCTYPE html>
-<!-- saved from url=(0087)file:///C:/Users/nicko/Downloads/App/FitBench-Store-Package/FitBench/website/index.html -->
-<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>Fit Bench</title>
+<title>FitBench</title>
 <meta name="description" content="Least-squares curve fitting: polynomial, exponential, power, Gaussian, sinusoidal, logistic, saturation and custom models, with exports to Excel, CSV, text and JSON.">
-<link rel="manifest" href="file:///C:/Users/nicko/Downloads/App/FitBench-Store-Package/FitBench/website/manifest.webmanifest">
+<link rel="manifest" href="manifest.webmanifest">
 <meta name="theme-color" content="#eef1f4" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#12171d" media="(prefers-color-scheme: dark)">
-<link rel="icon" type="image/png" sizes="32x32" href="file:///C:/Users/nicko/Downloads/App/FitBench-Store-Package/FitBench/website/icons/favicon-32.png">
-<link rel="apple-touch-icon" href="file:///C:/Users/nicko/Downloads/App/FitBench-Store-Package/FitBench/website/icons/icon-192.png">
-<link rel="preconnect" href="https://fonts.googleapis.com/">
-<link rel="stylesheet" href="./index_files/css2">
+<link rel="icon" type="image/png" sizes="32x32" href="icons/favicon-32.png">
+<link rel="apple-touch-icon" href="icons/icon-192.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=Instrument+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;600&display=swap">
 <style>
 /* Layout: instrument bench — data, model and method rail on the left; plot, results, exports and model comparison on the right; stacks on phones */
 :root{
@@ -126,7 +126,7 @@ footer a{color:inherit}
 
 <div class="wrap">
   <header>
-    <h1><em>FitBench</em></h1>
+    <h1><em>Fit</em>Bench</h1>
     <p class="sub">Import a data set, choose a model and a fitting method, and export the result to a report, Excel, or your analysis software.</p>
   </header>
 
@@ -136,50 +136,52 @@ footer a{color:inherit}
         <h2>1 · Data</h2>
         <div class="row">
           <label for="sample">Example</label>
-          <select id="sample" style="flex:1"><option value="">Choose an example…</option><option value="toss">Ball toss: height vs. time</option><option value="ohm">Resistor: voltage vs. current, one bad reading</option><option value="decay">Radioactive decay with background</option><option value="peak">Emission line: Gaussian peak</option><option value="spring">Damped spring oscillation</option><option value="enzyme">Enzyme kinetics: saturation</option><option value="growth">Population growth: logistic</option></select>
+          <select id="sample" style="flex:1"></select>
         </div>
-        <div class="drop" id="drop">Drop a .csv, .tsv, .txt or .xlsx file here, or <label class="filebtn" for="file" style="display:inline-block;margin-top:6px">Choose file…</label>
-          <input type="file" id="file" accept=".csv,.tsv,.txt,.dat,.xlsx,text/csv,text/plain">
+        <div class="drop" id="drop">
+          Drop a .csv, .tsv or .txt file here, or
+          <label class="filebtn" for="file" style="display:inline-block;margin-top:6px">Choose file…</label>
+          <input type="file" id="file" accept=".csv,.tsv,.txt,.dat,text/csv,text/plain">
         </div>
-        <p class="note" id="srcNote"><span class="tag">Example</span> Ball toss: height vs. time. Replace it with your own data.</p>
+        <p class="note" id="srcNote"></p>
         <label for="raw">Values (one point per row; commas, tabs, semicolons or spaces). Edit freely.</label>
         <textarea id="raw" spellcheck="false"></textarea>
-        <div class="field"><label for="xcol">X column</label><select id="xcol"><option value="0">time_s</option><option value="1">height_m</option><option value="2">sigma_m</option></select><span></span></div>
-        <div class="field"><label for="ycol">Y column</label><select id="ycol"><option value="0">time_s</option><option value="1">height_m</option><option value="2">sigma_m</option></select><span></span></div>
-        <div class="field"><label for="scol">Y error (σy)</label><select id="scol"><option value="none">None</option><option value="const">Same for all points…</option><option value="0">Column: time_s</option><option value="1">Column: height_m</option><option value="2">Column: sigma_m</option></select><input type="number" id="sconst" step="any" min="0" value="0.1" aria-label="Constant y uncertainty" hidden=""></div>
-        <div class="field"><label for="sxcol">X error (σx)</label><select id="sxcol"><option value="none">None</option><option value="const">Same for all points…</option><option value="0">Column: time_s</option><option value="1">Column: height_m</option><option value="2">Column: sigma_m</option></select><input type="number" id="sxconst" step="any" min="0" value="0.01" aria-label="Constant x uncertainty" hidden=""></div>
-        <p class="note" id="parseNote">14 usable points.</p>
+        <div class="field"><label for="xcol">X column</label><select id="xcol"></select><span></span></div>
+        <div class="field"><label for="ycol">Y column</label><select id="ycol"></select><span></span></div>
+        <div class="field"><label for="scol">Y error (σy)</label><select id="scol"></select><input type="number" id="sconst" step="any" min="0" value="0.1" aria-label="Constant y uncertainty" hidden></div>
+        <div class="field"><label for="sxcol">X error (σx)</label><select id="sxcol"></select><input type="number" id="sxconst" step="any" min="0" value="0.01" aria-label="Constant x uncertainty" hidden></div>
+        <p class="note" id="parseNote"></p>
       </section>
 
       <section class="panel">
         <h2>2 · Model</h2>
-        <div class="chips" id="chips" role="group" aria-label="Model"><button type="button" class="chip on" data-model="poly">Polynomial<span>linear, quadratic, any degree</span></button><button type="button" class="chip" data-model="prop">Proportional<span>a·x</span></button><button type="button" class="chip" data-model="log">Logarithmic<span>a + b·ln x</span></button><button type="button" class="chip" data-model="exp">Exponential<span>A·e^(Bx)</span></button><button type="button" class="chip" data-model="expc">Exponential + offset<span>A·e^(Bx) + C</span></button><button type="button" class="chip" data-model="power">Power law<span>A·x^B</span></button><button type="button" class="chip" data-model="gauss">Gaussian peak<span>A·e^(−(x−μ)²/2w²) + C</span></button><button type="button" class="chip" data-model="sine">Sinusoid<span>A·sin(2πfx + φ) + C</span></button><button type="button" class="chip" data-model="damped">Damped oscillation<span>A·e^(−γx)·sin(2πfx + φ) + C</span></button><button type="button" class="chip" data-model="logistic">Logistic (S-curve)<span>L / (1 + e^(−k(x−x₀))) + C</span></button><button type="button" class="chip" data-model="sat">Saturation (Michaelis–Menten)<span>Vmax·x / (K + x)</span></button><button type="button" class="chip" data-model="custom">Custom formula<span>your own y = f(x)</span></button><button type="button" class="chip on" data-model="poly">Polynomial<span>linear, quadratic, any degree</span></button><button type="button" class="chip" data-model="prop">Proportional<span>a·x</span></button><button type="button" class="chip" data-model="log">Logarithmic<span>a + b·ln x</span></button><button type="button" class="chip" data-model="exp">Exponential<span>A·e^(Bx)</span></button><button type="button" class="chip" data-model="expc">Exponential + offset<span>A·e^(Bx) + C</span></button><button type="button" class="chip" data-model="power">Power law<span>A·x^B</span></button><button type="button" class="chip" data-model="gauss">Gaussian peak<span>A·e^(−(x−μ)²/2w²) + C</span></button><button type="button" class="chip" data-model="sine">Sinusoid<span>A·sin(2πfx + φ) + C</span></button><button type="button" class="chip" data-model="damped">Damped oscillation<span>A·e^(−γx)·sin(2πfx + φ) + C</span></button><button type="button" class="chip" data-model="logistic">Logistic (S-curve)<span>L / (1 + e^(−k(x−x₀))) + C</span></button><button type="button" class="chip" data-model="sat">Saturation (Michaelis–Menten)<span>Vmax·x / (K + x)</span></button><button type="button" class="chip" data-model="custom">Custom formula<span>your own y = f(x)</span></button></div>
+        <div class="chips" id="chips" role="group" aria-label="Model"></div>
         <div class="sub-panel" id="polyBox">
           <div class="row" role="group" aria-label="Quick degree">
             <button type="button" data-d="1">Linear</button>
-            <button type="button" data-d="2" class="on">Quadratic</button>
+            <button type="button" data-d="2">Quadratic</button>
             <button type="button" data-d="3">Cubic</button>
           </div>
           <div class="row">
             <label for="deg">Degree</label>
-            <input type="number" id="deg" min="1" step="1" value="2" max="13">
-            <input type="range" id="degR" min="1" max="13" step="1" value="2" aria-label="Degree slider">
+            <input type="number" id="deg" min="1" step="1" value="2">
+            <input type="range" id="degR" min="1" max="10" step="1" value="2" aria-label="Degree slider">
           </div>
         </div>
-        <div class="sub-panel" id="customBox" hidden="">
+        <div class="sub-panel" id="customBox" hidden>
           <label for="cexpr">y = (use x, any parameter names, + − * / ^ and sin cos tan exp ln log sqrt abs pi)</label>
           <input type="text" id="cexpr" spellcheck="false" autocomplete="off" value="A*exp(-x/tau) + C">
           <p class="note">ln is the natural log and log is base 10. Set rough starting values for each parameter so the fit can find the right minimum.</p>
-          <div class="starts" id="cstarts"><label>A start<input type="number" step="any" id="start_A"></label><label>tau start<input type="number" step="any" id="start_tau"></label><label>C start<input type="number" step="any" id="start_C"></label></div>
+          <div class="starts" id="cstarts"></div>
         </div>
-        <p class="note" id="modelNote">y = a₂x² + a₁x + a₀. Any degree up to 13 works with this data.</p>
+        <p class="note" id="modelNote"></p>
       </section>
 
       <section class="panel">
         <h2>3 · Method</h2>
         <div class="checks">
           <label class="ck"><input type="checkbox" id="robust"> Robust fit (Huber) <small>reduces the pull of outliers</small></label>
-          <label class="ck"><input type="checkbox" id="band" checked=""> Show 95% confidence band</label>
+          <label class="ck"><input type="checkbox" id="band" checked> Show 95% confidence band</label>
           <label class="ck"><input type="checkbox" id="logx"> Log scale x</label>
           <label class="ck"><input type="checkbox" id="logy"> Log scale y</label>
         </div>
@@ -191,35 +193,35 @@ footer a{color:inherit}
       <section class="panel">
         <div class="row spread">
           <h2>Plot</h2>
-          <div class="legend"><span><i class="dot" style="background:var(--pt)"></i>Data</span><span id="lgRing" hidden=""><i class="ring"></i>Down-weighted</span><span><i style="background:var(--fit)"></i>Fit</span><span id="lgBand"><i class="band"></i>95% band</span></div>
+          <div class="legend"><span><i class="dot" style="background:var(--pt)"></i>Data</span><span id="lgRing" hidden><i class="ring"></i>Down-weighted</span><span><i style="background:var(--fit)"></i>Fit</span><span id="lgBand"><i class="band"></i>95% band</span></div>
         </div>
-        <div class="chartbox" id="box"><canvas id="cv" aria-label="Data and fitted curve" width="1596" height="998"></canvas><div class="tip" id="tip" hidden=""></div></div>
-        <div class="chartbox small"><canvas id="rv" aria-label="Residuals" width="1596" height="439"></canvas></div>
+        <div class="chartbox" id="box"><canvas id="cv" aria-label="Data and fitted curve"></canvas><div class="tip" id="tip" hidden></div></div>
+        <div class="chartbox small"><canvas id="rv" aria-label="Residuals"></canvas></div>
       </section>
 
       <section class="panel">
         <div class="row spread">
-          <h2>Best fit · <span id="mName" style="text-transform:none;letter-spacing:0">Quadratic</span></h2>
+          <h2>Best fit · <span id="mName" style="text-transform:none;letter-spacing:0"></span></h2>
           <button type="button" id="copyEq">Copy equation</button>
         </div>
-        <div class="eq" id="eq">y = −4.8956·x<sup>2</sup> + 9.18086·x + 1.51607</div>
+        <div class="eq" id="eq"></div>
         <div class="stats">
-          <div class="stat"><b id="sN">14</b><span>Points n</span></div>
-          <div class="stat"><b id="sK">3</b><span>Params k</span></div>
-          <div class="stat"><b id="sDof">11</b><span>dof</span></div>
-          <div class="stat"><b id="sChi">6.2184</b><span>χ²</span></div>
-          <div class="stat"><b id="sRed">0.5653</b><span>χ² / dof</span></div>
-          <div class="stat"><b id="sP">0.8584</b><span>p-value</span></div>
-          <div class="stat"><b id="sR2">0.99938</b><span>R²</span></div>
-          <div class="stat"><b id="sAdj">0.99927</b><span>Adj. R²</span></div>
-          <div class="stat"><b id="sRmse">0.03999</b><span>RMSE</span></div>
-          <div class="stat"><b id="sAic">14.618</b><span>AICc</span></div>
+          <div class="stat"><b id="sN">–</b><span>Points n</span></div>
+          <div class="stat"><b id="sK">–</b><span>Params k</span></div>
+          <div class="stat"><b id="sDof">–</b><span>dof</span></div>
+          <div class="stat"><b id="sChi">–</b><span>χ²</span></div>
+          <div class="stat"><b id="sRed">–</b><span>χ² / dof</span></div>
+          <div class="stat"><b id="sP">–</b><span>p-value</span></div>
+          <div class="stat"><b id="sR2">–</b><span>R²</span></div>
+          <div class="stat"><b id="sAdj">–</b><span>Adj. R²</span></div>
+          <div class="stat"><b id="sRmse">–</b><span>RMSE</span></div>
+          <div class="stat"><b id="sAic">–</b><span>AICc</span></div>
         </div>
-        <div class="notes" id="fitNotes"><p class="note good">χ²/dof is close to 1: the fit agrees with the data within the stated errors.</p></div>
-        <div class="tbl"><table id="ptbl"><thead><tr><th>Parameter</th><th>Value</th><th>Std. error</th><th>Rel. error</th></tr></thead><tbody><tr><td>a₀</td><td>1.5160714</td><td>± 0.04197</td><td>2.77 %</td></tr><tr><td>a₁</td><td>9.1808608</td><td>± 0.09995</td><td>1.09 %</td></tr><tr><td>a₂</td><td>-4.8956044</td><td>± 0.04942</td><td>1.01 %</td></tr></tbody></table></div>
+        <div class="notes" id="fitNotes"></div>
+        <div class="tbl"><table id="ptbl"><thead><tr><th>Parameter</th><th>Value</th><th>Std. error</th><th>Rel. error</th></tr></thead><tbody></tbody></table></div>
         <div class="pred">
           <label for="px">Predict at x =</label><input type="number" id="px" step="any" value="1">
-          <span>ŷ = <output id="py">5.8013278  ± 0.0531 (95%)</output></span>
+          <span>ŷ = <output id="py">–</output></span>
         </div>
       </section>
 
@@ -237,31 +239,31 @@ footer a{color:inherit}
         <p class="note" id="expNote" aria-live="polite"></p>
       </section>
 
-      <section class="panel" id="preview" hidden="">
+      <section class="panel" id="preview" hidden>
         <div class="row spread"><h2 id="pvTitle">Export preview</h2><div class="row"><button type="button" id="pvCopy">Copy all</button><button type="button" id="pvClose">Close</button></div></div>
-        <textarea id="pvText" readonly="" spellcheck="false"></textarea>
+        <textarea id="pvText" readonly spellcheck="false"></textarea>
       </section>
 
       <section class="panel">
         <h2>Compare models</h2>
         <p class="note">Every model fitted to the same data and method, ranked by AICc. Lower AICc is better; models within about 2 of the best are equally supported. Click a row to use it.</p>
-        <div class="tbl"><table id="cmp"><thead><tr><th>Model</th><th>k</th><th>χ²/dof</th><th>R²</th><th>ΔAICc</th></tr></thead><tbody><tr class="click cur" tabindex="0"><td>Quadratic <span class="tag">best</span></td><td>3</td><td>0.5653</td><td>0.9994</td><td>0</td></tr><tr class="click" tabindex="0"><td>Cubic</td><td>4</td><td>0.6119</td><td>0.9994</td><td>3.95</td></tr><tr class="click" tabindex="0"><td>Gaussian peak</td><td>4</td><td>0.6226</td><td>0.9994</td><td>4.05</td></tr><tr class="click" tabindex="0"><td>Sinusoid</td><td>4</td><td>0.6227</td><td>0.9994</td><td>4.05</td></tr><tr class="click" tabindex="0"><td>Polynomial, degree 4</td><td>5</td><td>0.6695</td><td>0.9994</td><td>8.91</td></tr><tr class="click" tabindex="0"><td>Damped oscillation</td><td>5</td><td>0.6811</td><td>0.9994</td><td>9.01</td></tr><tr class="click" tabindex="0"><td>Logistic (S-curve)</td><td>4</td><td>522.8</td><td>0.4777</td><td>5225.98</td></tr><tr class="click" tabindex="0"><td>Exponential + offset</td><td>3</td><td>494.9</td><td>0.4561</td><td>5438.18</td></tr><tr class="click" tabindex="0"><td>Saturation (Michaelis–Menten)</td><td>2</td><td>720.8</td><td>0.1359</td><td>8640.35</td></tr><tr class="click" tabindex="0"><td>Linear</td><td>2</td><td>818.4</td><td>0.01898</td><td>9811.15</td></tr><tr class="click" tabindex="0"><td>Custom formula</td><td>3</td><td>892.8</td><td>0.01898</td><td>9814.47</td></tr><tr class="click" tabindex="0"><td>Exponential</td><td>2</td><td>822.5</td><td>0.01405</td><td>9860.50</td></tr><tr class="click" tabindex="0"><td>Proportional</td><td>1</td><td>2350</td><td>-2.051</td><td>30532.29</td></tr><tr class="click na" tabindex="0"><td>Logarithmic<br><small>needs every x &gt; 0</small></td><td>2</td><td>–</td><td>–</td><td>–</td></tr><tr class="click na" tabindex="0"><td>Power law<br><small>needs every x &gt; 0</small></td><td>2</td><td>–</td><td>–</td><td>–</td></tr></tbody></table></div>
+        <div class="tbl"><table id="cmp"><thead><tr><th>Model</th><th>k</th><th>χ²/dof</th><th>R²</th><th>ΔAICc</th></tr></thead><tbody></tbody></table></div>
       </section>
     </div>
   </div>
   <footer>
-    <span>FitBench <span id="appVer">v1.0.0</span> · works offline</span>
-    <span><a href="file:///C:/Users/nicko/Downloads/App/FitBench-Store-Package/FitBench/website/privacy.html">Privacy</a></span>
+    <span>FitBench <span id="appVer"></span> · works offline</span>
+    <span><a href="privacy.html">Privacy</a></span>
   </footer>
 </div>
-<div class="update" id="updateBar" role="status" hidden="">
-  <span>A new version of Fit Bench is ready.</span>
+<div class="update" id="updateBar" role="status" hidden>
+  <span>A new version of FitBench is ready.</span>
   <button type="button" id="updNow">Restart now</button>
   <button type="button" class="ghost" id="updLater">Later</button>
 </div>
 
-<script src="./index_files/version.js"></script>
-<script src="./index_files/xlsx-lite.js"></script>
+<script src="version.js"></script>
+<script src="xlsx-lite.js"></script>
 <script>
 "use strict";
 const $ = id => document.getElementById(id);
@@ -1076,7 +1078,7 @@ function summaryRows(f){
     ['Chi-squared', f.chi2], ['Reduced chi-squared', f.red], ['p-value', f.pval],
     ['R-squared', f.r2], ['Adjusted R-squared', f.adj], ['RMSE', f.rmse], ['SSE', f.sse],
     ['AICc', f.aicc], ['BIC', f.bic], ['Down-weighted points', f.robust?f.downweighted:'n/a'],
-    ['Data source', state.source.replace(/<[^>]+>/g,'')], ['Generated', new Date().toISOString()], ['Tool', 'Least-Squares Fit Bench']
+    ['Data source', state.source.replace(/<[^>]+>/g,'')], ['Generated', new Date().toISOString()], ['Tool', 'FitBench']
   ];
 }
 function dataCols(f){
@@ -1125,7 +1127,7 @@ function buildJSON(f){
   const corr=f.cov?f.cov.map((r,i)=>r.map((v,j)=>v/Math.sqrt(f.cov[i][i]*f.cov[j][j]))):null;
   const c=dataCols(f);
   return JSON.stringify({
-    tool:'Least-Squares Fit Bench', generated:new Date().toISOString(),
+    tool:'FitBench', generated:new Date().toISOString(),
     model:{key:f.spec.key, name:f.label, formula:formulaFor(f.spec), degree:f.spec.deg??null, equation:eqFor(f,TX), custom_expression:f.spec.key==='custom'?CUSTOM.src:null},
     method:methodText(f), parameter_errors_scaled_by_reduced_chi2:f.scaled,
     columns:{x:colName(+$('xcol').value), y:colName(+$('ycol').value), sigma_y:sigmaDesc('y'), sigma_x:sigmaDesc('x')},
@@ -1139,7 +1141,7 @@ function buildJSON(f){
 function buildXLSX(f){
   const clean=v=>typeof v==='number'&&!isFinite(v)?'':v;
   const sheets=[];
-  sheets.push({name:'Summary',widths:[24,80],rows:[['Least-Squares Fit Bench',''],...summaryRows(f).map(([k,v])=>[k,clean(v)])]});
+  sheets.push({name:'Summary',widths:[24,80],rows:[['FitBench',''],...summaryRows(f).map(([k,v])=>[k,clean(v)])]});
   sheets.push({name:'Parameters',headerRow:true,widths:[12,22,18,16],rows:[['Parameter','Value','Std. error','Rel. error (%)'],
     ...f.names.map((n,i)=>[n,f.p[i],clean(f.errs[i]),isFinite(f.errs[i])&&f.p[i]?Math.abs(f.errs[i]/f.p[i])*100:''])]});
   const c=dataCols(f), fitCol=c.findIndex(x=>x[0]==='y_fit'), resCol=c.findIndex(x=>x[0]==='residual');
@@ -1188,7 +1190,8 @@ $('pvCopy').addEventListener('click',async()=>{
 /* =====================================================================
    Wiring
    ===================================================================== */
-// model chips
+// model chips (the box is emptied first so the buttons can never appear twice)
+$('chips').replaceChildren();
 for(const key of ORDER){
   const m=MODELS[key], b=document.createElement('button');
   b.type='button'; b.className='chip'; b.dataset.model=key;
@@ -1294,6 +1297,5 @@ if('serviceWorker' in navigator && location.protocol!=='file:'){
   }).catch(()=>{});
 }
 </script>
-
-
-</body></html>
+</body>
+</html>

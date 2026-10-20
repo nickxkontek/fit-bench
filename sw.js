@@ -1,4 +1,4 @@
-// Fit Bench service worker: makes the app work offline and delivers updates.
+// FitBench service worker: makes the app work offline and delivers updates.
 // You never need to edit this file. To publish an update, change the number in version.js.
 importScripts("version.js");
 
